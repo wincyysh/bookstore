@@ -2,7 +2,6 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <!--    <link rel="icon" href="%PUBLIC_URL%/book-favicon.ico" /> -->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
@@ -12,8 +11,15 @@
   </head>
   <body>
     <h1>Your Bookstore</h1>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="search">
+      <input type="search" id="searchInput" name="q" placeholder="enter book you want to search" />
+      <input type="submit" id="searchSubmit" value="submit" />
+    </div>
+    <h2>API response from JS to HTML</h2>
+    <div id="message container">
+      
+    </div>
     <div id="root"></div>
-    <!-- <script src="./../src/index.js"></script> -->
+    <script src="./../src/index.js"></script>
   </body>
 </html>

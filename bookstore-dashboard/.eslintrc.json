@@ -5,6 +5,8 @@
     "node": true
   },
   "extends": [
+    // "react-app",
+    "react-app/jest",
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
@@ -27,7 +29,7 @@
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",
     "no-unused-vars": "warn",
-    "no-console": "warn"
+    "no-console": "off"
   },
   "settings": {
     "react": {

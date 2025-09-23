@@ -26,7 +26,8 @@ const App = () => {
 
   const handleSearch = async e => {
     e.preventDefault();
-    const query = searchInput.trim().replace(/[\s\t]+/g, '+');
+    const query = searchInput.trim();
+    // .replace(/[\s\t]+/g, '+');
 
     if (!query) {
       setError('Book name cannot be empty!');
@@ -55,7 +56,7 @@ const App = () => {
         <input
           type="search"
           id="searchInput"
-          placeholder="Enter book title"
+          placeholder="Search book, author, series, ISBN"
           value={searchInput}
           onChange={e => setSearchInput(e.target.value)}
         />
@@ -65,7 +66,7 @@ const App = () => {
       {error && <p>{error}</p>}
 
       {books && books.length > 0 && (
-        <div id="test">
+        <div id="books">
           {books.map(book => (
             <div key={book.id}>
               <h2>{book.volumeInfo.title}</h2>
@@ -76,18 +77,19 @@ const App = () => {
                   loading="lazy" // This is the key part for lazy loading
                 />
               )}
-              <p>
-                by{' '}
-                {book.volumeInfo.authors
-                  ? book.volumeInfo.authors.join(', ')
-                  : 'Unknown Author'}
-              </p>
-              <p>
-                description
-                {book.volumeInfo.description
-                  ? book.volumeInfo.description
-                  : 'No description'}
-              </p>
+              <div id="bookDetail">
+                <div id="authors">
+                  by{' '}
+                  {book.volumeInfo.authors
+                    ? book.volumeInfo.authors.join(', ')
+                    : 'Unknown Author'}
+                </div>
+                <div id="description">
+                  {book.volumeInfo.description
+                    ? book.volumeInfo.description
+                    : 'No description'}
+                </div>
+              </div>
             </div>
           ))}
         </div>

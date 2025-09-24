@@ -12,3 +12,48 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.img-container {
+  /* Set a fixed size for the container */
+  width: 128px;
+  height: 192px;
+  padding: 10px 10px 10px 10px;
+}
+
+.book-cover {
+  /* Ensure the image fills its container without distorting */
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+#book {
+  display: flex;
+  height: auto;
+  width: auto;
+  padding: 45px 0px 60px 0px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* Mobile: up to 767px wide */
+@media (max-width: 767px) {
+  #book-description {
+  max-Height: 30vh;
+  }
+}
+
+/* Tablet: 768px to 991px */
+@media (min-width: 768px) and (max-width: 991px) {
+  #book-description {
+  max-Height: 30vh;
+  }
+}
+
+/* Desktop: 992px and up */
+@media (min-width: 992px) {
+
+  #book-description {
+  max-Height: 30vh;
+  }
+}

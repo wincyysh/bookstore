@@ -50,45 +50,61 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div className="container">
       <h1>Bookstore Dashboard</h1>
-      <form onSubmit={handleSearch}>
-        <input
-          type="search"
-          id="searchInput"
-          placeholder="Search book, author, series, ISBN"
-          value={searchInput}
-          onChange={e => setSearchInput(e.target.value)}
-        />
-        <button type="submit">Search</button>
-      </form>
-
+      <div id="search-bar">
+        <form onSubmit={handleSearch} className="d-flex">
+          <input
+            type="search"
+            id="searchInput"
+            className="form-control"
+            placeholder="Search book, author, series, ISBN"
+            value={searchInput}
+            onChange={e => setSearchInput(e.target.value)}
+          />
+          <button type="submit" className="btn btn-dark">
+            Search
+          </button>
+        </form>
+      </div>
       {error && <p>{error}</p>}
 
       {books && books.length > 0 && (
-        <div id="books">
+        <div id="books" className="container">
           {books.map(book => (
-            <div key={book.id}>
-              <h2>{book.volumeInfo.title}</h2>
-              {book.volumeInfo.imageLinks?.thumbnail && (
-                <img
-                  src={book.volumeInfo.imageLinks.thumbnail}
-                  alt={`Cover of ${book.volumeInfo.title}`}
-                  loading="lazy" // This is the key part for lazy loading
-                />
-              )}
-              <div id="bookDetail">
-                <div id="authors">
-                  by{' '}
-                  {book.volumeInfo.authors
-                    ? book.volumeInfo.authors.join(', ')
-                    : 'Unknown Author'}
+            <div
+              id="book"
+              key={book.id}
+              className="d-flex flex-column flex-md-row"
+            >
+              <div
+                id="book-details"
+                className="card-header justify-content-start col-6 p-1"
+              >
+                <h2>{book.volumeInfo.title}</h2>
+                <div id="book-authors">
+                  <h5>
+                    by{' '}
+                    {book.volumeInfo.authors
+                      ? book.volumeInfo.authors.join(', ')
+                      : 'Unknown Author'}
+                  </h5>
                 </div>
-                <div id="description">
+                <div id="book-description" className="overflow-auto p-1">
                   {book.volumeInfo.description
                     ? book.volumeInfo.description
                     : 'No description'}
                 </div>
+              </div>
+              <div id="book-img" className="img-container">
+                {book.volumeInfo.imageLinks?.thumbnail && (
+                  <img
+                    src={book.volumeInfo.imageLinks?.thumbnail}
+                    alt={`Cover of ${book.volumeInfo.title}`}
+                    loading="lazy" // This is the key part for lazy loading
+                    className="book-cover"
+                  />
+                )}
               </div>
             </div>
           ))}

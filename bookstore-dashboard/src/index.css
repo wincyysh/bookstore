@@ -36,6 +36,10 @@ body {
   flex-shrink: 0;
 }
 
+.short-select {
+  width: auto;
+}
+
 /* Mobile: up to 767px wide */
 @media (max-width: 767px) {
   #book-description {

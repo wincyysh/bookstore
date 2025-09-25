@@ -21,13 +21,13 @@ import { fetchApi } from './services/bookService';
 
 const App = () => {
   const [searchInput, setSearchInput] = useState('');
+  const [searchType, setSearchType] = useState('');
   const [books, setBooks] = useState(null);
   const [error, setError] = useState(null);
 
   const handleSearch = async e => {
     e.preventDefault();
     const query = searchInput.trim();
-    // .replace(/[\s\t]+/g, '+');
 
     if (!query) {
       setError('Book name cannot be empty!');
@@ -35,7 +35,7 @@ const App = () => {
     }
 
     try {
-      const data = await fetchApi(query);
+      const data = await fetchApi(searchType, query);
       if (!data || !data.items) {
         setBooks(null);
         setError('No books found or an API error occurred.');
@@ -51,9 +51,26 @@ const App = () => {
 
   return (
     <div className="container">
-      <h1>Bookstore Dashboard</h1>
+      <h1>Books Recommendation</h1>
       <div id="search-bar">
         <form onSubmit={handleSearch} className="d-flex">
+          <select
+            name="books-search"
+            id="search-types"
+            className="form-control short-select"
+            value={searchType}
+            onChange={e => {
+              setSearchType(e.target.value);
+            }}
+          >
+            <option value="">--Please choose an option--</option>
+            <option value="intitle:">title</option>
+            <option value="inauthor:">author</option>
+            <option value="isbn:">isbn</option>
+            <option value="subject:">subject</option>
+            <option value="inpublisher:">publisher</option>
+          </select>
+
           <input
             type="search"
             id="searchInput"

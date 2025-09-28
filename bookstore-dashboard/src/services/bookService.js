@@ -10,7 +10,9 @@
  * @param {string} para - The query parameter for the API.
  * @returns {Promise<object | null>} A description of the return value.
  */
-export async function fetchApi(searchType, para) {
+// export async function fetchApi(searchType, para) {
+async function fetchApi(searchType, para) {
+
   const basicUrl = 'https://www.googleapis.com/books/v1/volumes?q=';
   const url = basicUrl + searchType + para;
   console.log(url);
@@ -26,3 +28,7 @@ export async function fetchApi(searchType, para) {
     return null;
   }
 }
+
+module.exports = {
+  fetchApi,
+};

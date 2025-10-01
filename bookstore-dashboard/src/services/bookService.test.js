@@ -1,7 +1,8 @@
 // src/services/bookService.test.js
 
 // Using CommonJS require to match the module.exports in bookService.js
-const { fetchApi } = require('./bookService');
+// const { fetchApi } = require('./bookService');
+import { fetchApi } from './bookService';
 
 // --- MOCK DATA FOR DEFAULT (BEFORE EACH) ---
 // This smaller object is needed because your beforeEach function currently

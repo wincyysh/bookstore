@@ -1,9 +1,7 @@
-// babel.config.js (Corrected content)
-const config = {
+// babel.config.js
+module.exports = {
   presets: [
     ['@babel/preset-env', { targets: { node: 'current' } }],
-    '@babel/preset-react', // Include this if you installed it earlier
+    '@babel/preset-react',
   ],
 };
-
-export default config;
